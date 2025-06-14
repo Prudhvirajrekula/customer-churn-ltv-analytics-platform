@@ -1,34 +1,78 @@
+# 📊 Customer Churn & LTV Analytics Toolkit
 
-# SQL Data Analytics Toolkit
+An end-to-end solution for data analysts and data scientists to analyze customer churn and lifetime value using SQL-based feature engineering, Python integration, and an interactive Streamlit dashboard.
 
-This project provides a collection of modular SQL scripts for business data analysis, designed to help data analysts and data scientists explore, segment, and derive insights efficiently.
+**🔗 GitHub Repo**: [customer-churn-ltv-analytics-toolkit](https://github.com/Prudhvirajrekula/customer-churn-ltv-analytics-toolkit)
 
-## 📊 Features
+---
 
-- 25+ ready-to-use SQL scripts for:
-  - KPI reporting
-  - Time-based trends and rolling metrics
-  - Segmentation and cohort analysis
-  - Exploratory data profiling
-- Uses clean and scalable SQL patterns for reproducibility and clarity
+## 📦 Project Structure
 
-## 📁 Contents
+```
+.
+├── datasets/
+│   ├── csv-files/                # Source CSV data
+│   └── DataWarehouseAnalytics.bak
+├── scripts/
+│   ├── *.sql                     # Modular SQL scripts for feature generation
+│   ├── import_gold_to_mysql.py  # Load data into MySQL from CSVs
+│   └── python_integration.py    # SQL + Python: feature generation and EDA
+├── app.py                        # Streamlit dashboard
+├── features_customer_churn_ltv.csv
+├── churn_ltv_boxplot.png
+├── requirements.txt
+└── README.md
+```
 
-- `scripts/`: Contains all SQL queries grouped by use case
-- `datasets/`: Sample datasets to support testing
+---
 
-## 🚀 How to Use
+## 🧠 Key Features
 
-1. Open scripts in your preferred SQL editor (e.g., DBeaver, pgAdmin, MySQL Workbench).
-2. Point to your own dataset or test with the provided CSVs.
-3. Modify WHERE conditions or parameters as needed for reuse.
+- 🔧 14+ modular SQL scripts (exploration, segmentation, performance, etc.)
+- 📥 CSV-to-MySQL importer with automatic table creation
+- 🧮 Feature engineering for:
+  - Churn flag
+  - Lifetime Value (LTV)
+  - Recency and order frequency
+- 📈 Enhanced Streamlit dashboard with:
+  - Filters
+  - Hover tooltips
+  - Interactive visuals
 
-## 🧰 Tools Used
+---
 
-- SQL (MySQL / PostgreSQL compatible)
-- Window functions, aggregations, and joins
-- Business-focused logic and best practices
+## 🚀 How to Run
 
-## 🧑‍💻 Author
+### 1. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-Project maintained by [Prudhvi Raj](https://github.com/Prudhvirajrekula)
+### 2. Import CSVs to MySQL
+```bash
+python scripts/import_gold_to_mysql.py
+```
+
+### 3. Run Python Feature Generator
+```bash
+python scripts/python_integration.py
+```
+
+### 4. Launch Interactive Dashboard
+```bash
+streamlit run app.py
+```
+
+---
+
+## 📊 Visuals
+
+![LTV Boxplot](churn_ltv_boxplot.png)
+
+---
+
+## 👨‍💻 Created By
+
+**Prudhvi Raj Rekula**  
+Built with ❤️ using SQL, Python, and Streamlit  
+[GitHub Profile](https://github.com/Prudhvirajrekula)

@@ -20,7 +20,6 @@ __pycache__/
 *.bak
 *.sqlite
 *.db
-*.png
 
 # Ignore Streamlit cache
 .streamlit/

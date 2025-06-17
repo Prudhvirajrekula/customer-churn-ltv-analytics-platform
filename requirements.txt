@@ -1,6 +1,10 @@
-pandas
-mysql-connector-python
-matplotlib
-seaborn
-plotly
 streamlit
+pandas
+numpy
+matplotlib
+plotly
+seaborn
+torch
+scikit-learn
+joblib
+shap

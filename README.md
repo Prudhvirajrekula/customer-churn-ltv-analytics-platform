@@ -1,25 +1,27 @@
-# 📊 Customer Churn & LTV Analytics Toolkit
 
-An end-to-end solution for data analysts and data scientists to analyze customer churn and lifetime value using SQL-based feature engineering, Python integration, and an interactive Streamlit dashboard.
+# 📊 Customer Churn & LTV Analytics Platform
 
-**🔗 GitHub Repo**: [customer-churn-ltv-analytics-toolkit](https://github.com/Prudhvirajrekula/customer-churn-ltv-analytics-toolkit)
+An end-to-end solution to explore, engineer, and predict customer churn using a complete **SQL → Python → ML → Streamlit** pipeline.
+
+Built for data scientists and analysts, this platform combines **modular SQL-based feature engineering**, Python-powered transformation, a **PyTorch prediction model**, and explainable AI (SHAP) – all accessible through an intuitive Streamlit dashboard.
 
 ---
 
-## 📦 Project Structure
+## 🧱 Project Structure
 
 ```
 .
 ├── datasets/
-│   ├── csv-files/                # Source CSV data
-│   └── DataWarehouseAnalytics.bak
+│   ├── csv-files/                 # Raw CRM & ERP data (bronze/silver/gold layers)
+│   └── DataWarehouseAnalytics.bak # Backup of MySQL data warehouse
 ├── scripts/
-│   ├── *.sql                     # Modular SQL scripts for feature generation
-│   ├── import_gold_to_mysql.py  # Load data into MySQL from CSVs
-│   └── python_integration.py    # SQL + Python: feature generation and EDA
-├── app.py                        # Streamlit dashboard
-├── features_customer_churn_ltv.csv
-├── churn_ltv_boxplot.png
+│   ├── *.sql                      # Modular SQL scripts for feature engineering
+│   ├── import_gold_to_mysql.py   # Load CSVs into MySQL
+│   └── python_integration.py     # Feature generation, LTV calculation
+├── features_customer_churn_ltv.csv # Final ML-ready dataset
+├── churn_model.pt                # Trained PyTorch model
+├── scaler.pkl                    # Scaler used for feature standardization
+├── app.py                        # Streamlit dashboard (UI + ML + SHAP)
 ├── requirements.txt
 └── README.md
 ```
@@ -28,27 +30,32 @@ An end-to-end solution for data analysts and data scientists to analyze customer
 
 ## 🧠 Key Features
 
-- 🔧 14+ modular SQL scripts (exploration, segmentation, performance, etc.)
-- 📥 CSV-to-MySQL importer with automatic table creation
-- 🧮 Feature engineering for:
-  - Churn flag
-  - Lifetime Value (LTV)
-  - Recency and order frequency
-- 📈 Enhanced Streamlit dashboard with:
-  - Filters
-  - Hover tooltips
+- 📐 **SQL-Driven Feature Engineering**
+  - 14+ modular SQL scripts (segmentation, recency, churn logic, LTV metrics)
+  - Data pipeline designed around a gold-layer warehouse schema
+- 🧮 **Python Integration**
+  - Transforms SQL features for ML usage
+  - Applies standardization and saves model-ready features
+- 🔮 **Churn Prediction**
+  - PyTorch model trained with dropout + class balancing
+  - Real-time prediction using 3 key inputs
+- 🧩 **Explainable AI**
+  - SHAP bar plots show how each input influenced the prediction
+- 📊 **Streamlit Dashboard**
   - Interactive visuals
+  - Filters + user-friendly prediction panel
+  - Fully responsive UI
 
 ---
 
 ## 🚀 How to Run
 
-### 1. Install Dependencies
+### 1. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Import CSVs to MySQL
+### 2. (Optional) Import CSVs into MySQL
 ```bash
 python scripts/import_gold_to_mysql.py
 ```
@@ -58,21 +65,53 @@ python scripts/import_gold_to_mysql.py
 python scripts/python_integration.py
 ```
 
-### 4. Launch Interactive Dashboard
+### 4. Train Model (if not using provided one)
+```bash
+python train_pytorch_model.py
+```
+
+### 5. Launch the Streamlit Dashboard
 ```bash
 streamlit run app.py
 ```
 
 ---
 
-## 📊 Visuals
+## 🎯 Prediction Inputs
 
-![LTV Boxplot](churn_ltv_boxplot.png)
+- 🛒 Order Count  
+- 💰 Lifetime Value  
+- 📆 Days Since Last Order
+
+Each prediction is followed by a SHAP explanation plot.
+
+---
+
+## 📷 Sample Visual (Dashboard Preview)
+
+> ![LTV & SHAP Demo](churn_ltv_boxplot.png)
+
+---
+
+## 📚 Requirements
+
+- Python 3.9+
+- PyTorch
+- Streamlit
+- SHAP
+- Pandas, Numpy, Matplotlib, Plotly
+- (Optional) MySQL for SQL pipeline
 
 ---
 
 ## 👨‍💻 Created By
 
 **Prudhvi Raj Rekula**  
-Built with ❤️ using SQL, Python, and Streamlit  
-[GitHub Profile](https://github.com/Prudhvirajrekula)
+Built with ❤️ using SQL, PyTorch, SHAP & Streamlit  
+🔗 [GitHub Profile](https://github.com/Prudhvirajrekula)
+
+---
+
+## 📄 License
+
+This project is open-source and free to use under the MIT License.

@@ -1,6 +1,6 @@
-# 📊 Customer Churn & LTV Analytics Platform
+# 📊 Customer Churn & LTV Analytics & Prediction Platform
 
-An end-to-end full-stack analytics solution to extract, engineer, and analyze customer churn and lifetime value (LTV) using SQL, Python, and deep learning — with an interactive Streamlit dashboard and SHAP explainability.
+An end-to-end full-stack analytics/prediction solution to extract, engineer, and analyze customer churn and lifetime value (LTV) using SQL, Python, and deep learning — with an interactive Streamlit dashboard and SHAP explainability.
 
 ---
 

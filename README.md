@@ -89,4 +89,4 @@ streamlit run app.py
 ---
 
 ## View Live
-[Streamlit](https://github.com/Prudhvirajrekula)
+[Streamlit](https://customer-churn-ltv-prediction-platform-prudhviraj.streamlit.app/)

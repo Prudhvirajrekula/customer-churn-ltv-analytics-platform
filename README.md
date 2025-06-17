@@ -1,13 +1,10 @@
-
 # 📊 Customer Churn & LTV Analytics Platform
 
-An end-to-end solution to explore, engineer, and predict customer churn using a complete **SQL → Python → ML → Streamlit** pipeline.
-
-Built for data scientists and analysts, this platform combines **modular SQL-based feature engineering**, Python-powered transformation, a **PyTorch prediction model**, and explainable AI (SHAP) – all accessible through an intuitive Streamlit dashboard.
+An end-to-end full-stack analytics solution to extract, engineer, and analyze customer churn and lifetime value (LTV) using SQL, Python, and deep learning — with an interactive Streamlit dashboard and SHAP explainability.
 
 ---
 
-## 🧱 Project Structure
+## 📁 Project Structure
 
 ```
 .
@@ -19,99 +16,77 @@ Built for data scientists and analysts, this platform combines **modular SQL-bas
 │   ├── import_gold_to_mysql.py   # Load CSVs into MySQL
 │   └── python_integration.py     # Feature generation, LTV calculation
 ├── features_customer_churn_ltv.csv # Final ML-ready dataset
-├── churn_model.pt                # Trained PyTorch model
-├── scaler.pkl                    # Scaler used for feature standardization
-├── app.py                        # Streamlit dashboard (UI + ML + SHAP)
+├── churn_model.pt                # Trained single-task PyTorch model
+├── multitask_model.pt           # Trained multi-task PyTorch model (churn + LTV)
+├── scaler.pkl                    # StandardScaler for model inputs
+├── train_multitask_model.py     # Script to train multi-task model
+├── test_model.py                # Test script to run predictions from CLI
+├── app.py                        # Streamlit dashboard (UI + SHAP)
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 🧠 Key Features
+## 🧠 Key Highlights
 
-- 📐 **SQL-Driven Feature Engineering**
-  - 14+ modular SQL scripts (segmentation, recency, churn logic, LTV metrics)
-  - Data pipeline designed around a gold-layer warehouse schema
-- 🧮 **Python Integration**
-  - Transforms SQL features for ML usage
-  - Applies standardization and saves model-ready features
-- 🔮 **Churn Prediction**
-  - PyTorch model trained with dropout + class balancing
-  - Real-time prediction using 3 key inputs
-- 🧩 **Explainable AI**
-  - SHAP bar plots show how each input influenced the prediction
-- 📊 **Streamlit Dashboard**
-  - Interactive visuals
-  - Filters + user-friendly prediction panel
-  - Fully responsive UI
+### ✅ SQL Feature Engineering (First Phase)
+- 14+ modular SQL scripts for customer segmentation, order frequency, LTV, churn flags, and recency.
+- Designed using bronze → silver → gold data warehouse structure.
+- MySQL integration with automated table creation from raw CSVs.
+
+### 🔄 ETL + Python Integration
+- Automated ingestion pipeline to load CSVs → MySQL using `import_gold_to_mysql.py`.
+- EDA and feature joining scripts in Python to generate final `features_customer_churn_ltv.csv`.
+
+### 🔮 Deep Learning (Multi-Task Learning)
+- Trained PyTorch model to predict both churn (classification) and LTV (regression) in a **single network**.
+- Balanced dataset using upsampling; multi-task loss optimized jointly.
+- Achieved significant model generalization and business value prediction.
+
+### 🧠 SHAP Explainability
+- Integrated SHAP bar plots to explain churn predictions for individual customers.
+- Lightweight `ExactExplainer` used for fast explanations.
+
+### 📊 Streamlit Dashboard (Interactive UI)
+- Filters for churn status, LTV range.
+- Visuals: bar charts, scatter plots, box plots via Plotly.
+- Real-time churn + LTV prediction with SHAP insights.
+- Borderline warnings & input validation to guide non-technical users.
 
 ---
 
-## 🚀 How to Run
+## 🚀 Run Locally
 
-### 1. Install dependencies
+### 1. Install Requirements
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. (Optional) Import CSVs into MySQL
+### 2. Train the Model
 ```bash
-python scripts/import_gold_to_mysql.py
+python train_multitask_model.py
 ```
 
-### 3. Run Python Feature Generator
+### 3. Test the Model
 ```bash
-python scripts/python_integration.py
+python test_model.py
 ```
 
-### 4. Train Model (if not using provided one)
-```bash
-python train_pytorch_model.py
-```
-
-### 5. Launch the Streamlit Dashboard
+### 4. Launch Streamlit Dashboard
 ```bash
 streamlit run app.py
 ```
 
 ---
 
-## 🎯 Prediction Inputs
+## 📌 Screenshots
 
-- 🛒 Order Count  
-- 💰 Lifetime Value  
-- 📆 Days Since Last Order
+> 📉 Churn/LTV Distribution · 🔎 SHAP Explanation · 🧠 Real-time Prediction
 
-Each prediction is followed by a SHAP explanation plot.
+![LTV Boxplot](churn_ltv_boxplot.png)
 
 ---
 
-## 📷 Sample Visual (Dashboard Preview)
-
-> ![LTV & SHAP Demo](churn_ltv_boxplot.png)
-
----
-
-## 📚 Requirements
-
-- Python 3.9+
-- PyTorch
-- Streamlit
-- SHAP
-- Pandas, Numpy, Matplotlib, Plotly
-- (Optional) MySQL for SQL pipeline
-
----
-
-## 👨‍💻 Created By
-
-**Prudhvi Raj Rekula**  
-Built with ❤️ using SQL, PyTorch, SHAP & Streamlit  
-🔗 [GitHub Profile](https://github.com/Prudhvirajrekula)
-
----
-
-## 📄 License
-
-This project is open-source and free to use under the MIT License.
+## View Live
+[Streamlit](https://github.com/Prudhvirajrekula)
